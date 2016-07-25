@@ -57,6 +57,7 @@ EOT
 
         $data = json_decode(file_get_contents($file), true);
 
+
         if (!$data) {
             $output->writeln('<error>' . $file . ' is not valid JSON.</error>');
             return 2;
@@ -69,9 +70,7 @@ EOT
             return 1;
         }
 
-
-        $output->writeln('<success>'. $extra['version'] .'</success>');
-        
+        $output->writeln('version: <fg=green>'. $extra['version'] .'</>'."\n". 'previous:<fg=red> '.  $extra['previous']. '</>');
 
     }
 
