@@ -1,0 +1,22 @@
+{
+    "name": "jjpmann/app-version",
+    "type": "library",
+    "description": "Uses composer.json to hold app-version for projects not using packagist",
+    "homepage": "http://github.com/jjpmann/app-version",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jerry Price",
+            "email": "jjpmann@gmail.com",
+            "homepage": "http://github.com/jjpmann"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "AppVersion\\": "src/"
+        }
+    }
+}
