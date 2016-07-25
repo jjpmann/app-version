@@ -9,6 +9,9 @@ use Symfony\Component\Console\Application;
 
 error_reporting(-1);
 
+require __DIR__.'/../src/bootstrap.php';
+
 // run the command application
 $application = new Application('App Version', '0.1');
+$application->add(new AppVersion\Command\ValidateCommand);
 $application->run();
