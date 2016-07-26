@@ -4,7 +4,6 @@ namespace AppVersion\Command;
 
 class ValidateCommandTest extends \PHPUnit_Framework_TestCase
 {
-
     protected function setUp()
     {
     }

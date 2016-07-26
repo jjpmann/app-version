@@ -3,17 +3,15 @@
 namespace AppVersion;
 
 use Composer\Script\Event;
-use Composer\Installer\PackageEvent;
 
-class Version 
+class Version
 {
-
-    public static function echoCurrent(Event $event)    
+    public static function echoCurrent(Event $event)
     {
         echo self::current($event);
     }
 
-    public static function echoPrevious(Event $event)    
+    public static function echoPrevious(Event $event)
     {
         echo self::previous($event);
     }
@@ -21,8 +19,9 @@ class Version
     public static function current(Event $event)
     {
         $extra = $event->getComposer()->getPackage()->getExtra();
+
         return $extra['version'];
-    }  
+    }
 
     public static function previous(Event $event)
     {
@@ -34,5 +33,4 @@ class Version
     {
         echo 'test';
     }
-
 }
