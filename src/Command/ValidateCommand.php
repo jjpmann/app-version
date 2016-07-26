@@ -5,23 +5,22 @@ namespace AppVersion\Command;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class ValidateCommand extends Command
 {
     /**
-     * configure
+     * configure.
      */
     protected function configure()
     {
         $this
             ->setName('validate')
             ->setDescription('Validates a composer.json')
-            ->setDefinition(array(
+            ->setDefinition([
                 new InputArgument('file', InputArgument::OPTIONAL, 'path to composer.json file', './composer.json'),
-            ))
-            ->setHelp(<<<EOT
+            ])
+            ->setHelp(<<<'EOT'
 The validate command validates a given composer.json
 
 Exit codes in case of errors are:
@@ -42,15 +41,15 @@ EOT
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $file = $input->getArgument('file');
-        
+
 
         if (!file_exists($file)) {
-            $output->writeln('<error>' . $file . ' not found.</error>');
+            $output->writeln('<error>'.$file.' not found.</error>');
 
             return 3;
         }
         if (!is_readable($file)) {
-            $output->writeln('<error>' . $file . ' is not readable.</error>');
+            $output->writeln('<error>'.$file.' is not readable.</error>');
 
             return 3;
         }
@@ -59,7 +58,8 @@ EOT
 
 
         if (!$data) {
-            $output->writeln('<error>' . $file . ' is not valid JSON.</error>');
+            $output->writeln('<error>'.$file.' is not valid JSON.</error>');
+
             return 2;
         }
 
@@ -67,11 +67,10 @@ EOT
 
         if (!$extra || !$extra['version'] || !$extra['previous']) {
             $output->writeln('<error>version and/or previous not defined.</error>');
+
             return 1;
         }
 
-        $output->writeln('version: <fg=green>'. $extra['version'] .'</>'."\n". 'previous:<fg=red> '.  $extra['previous']. '</>');
-
+        $output->writeln('version: <fg=green>'.$extra['version'].'</>'."\n".'previous:<fg=red> '.$extra['previous'].'</>');
     }
-
 }
